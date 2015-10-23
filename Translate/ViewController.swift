@@ -8,15 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var textToTranslate: UITextView!
     @IBOutlet weak var translatedText: UITextView!
+    @IBOutlet weak var picker: UIPickerView!
     
+    let pickerData = ["French", "Irish", "Turkish"]
     //var data = NSMutableData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.picker.dataSource = self
+        self.picker.delegate = self
         
     }
     
@@ -67,6 +71,20 @@ class ViewController: UIViewController {
             }
         }
         
+    }
+    
+    //MARK: - Delegates and data sources
+    //MARK: Data Sources
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    //MARK: Delegates
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
     }
 }
 

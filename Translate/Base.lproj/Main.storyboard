@@ -43,20 +43,30 @@
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-mk-vbb">
+                                <rect key="frame" x="120" y="336" width="361" height="139"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="139" id="OHN-KK-b73"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="leading" secondItem="dii-Vg-90N" secondAttribute="leading" id="1I9-UQ-zeR"/>
+                            <constraint firstItem="5X9-mk-vbb" firstAttribute="top" secondItem="LaV-KV-DTJ" secondAttribute="bottom" constant="21" id="4Im-8L-Tsr"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8IO-Lz-JKE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5X9-mk-vbb" secondAttribute="trailing" constant="99" id="Ekb-yK-Xk3"/>
                             <constraint firstItem="Tk9-7M-DEK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GUW-Qr-ubm"/>
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="top" secondItem="dii-Vg-90N" secondAttribute="bottom" constant="31" id="LTD-OY-g8P"/>
                             <constraint firstAttribute="bottom" secondItem="Tk9-7M-DEK" secondAttribute="bottom" constant="20" symbolic="YES" id="P4Z-UM-mZY"/>
+                            <constraint firstItem="5X9-mk-vbb" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="cEF-qy-X3k"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dYF-2W-FQ1"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="trailing" secondItem="LaV-KV-DTJ" secondAttribute="trailing" id="l4y-8y-Mw1"/>
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="nxZ-oD-Bjx"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="picker" destination="5X9-mk-vbb" id="pwA-FT-db4"/>
                         <outlet property="textToTranslate" destination="dii-Vg-90N" id="LG1-oa-9nd"/>
                         <outlet property="translatedText" destination="LaV-KV-DTJ" id="lwH-Vg-B7t"/>
                     </connections>
