@@ -13,6 +13,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var textToTranslate: UITextView!
     @IBOutlet weak var translatedText: UITextView!
     @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var pickerLabel: UILabel!
+    
     
     let pickerData = ["French", "Irish", "Turkish"]
     //var data = NSMutableData()
@@ -85,6 +87,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     //MARK: Delegates
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerLabel.text = pickerData[row]
     }
 }
 
