@@ -43,14 +43,14 @@
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-mk-vbb">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-mk-vbb">
                                 <rect key="frame" x="120" y="372" width="361" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="OHN-KK-b73"/>
                                 </constraints>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-hT-8Ym">
-                                <rect key="frame" x="279" y="343" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="French" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-hT-8Ym">
+                                <rect key="frame" x="20" y="331" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -66,11 +66,10 @@
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="top" secondItem="dii-Vg-90N" secondAttribute="bottom" constant="31" id="LTD-OY-g8P"/>
                             <constraint firstAttribute="bottom" secondItem="Tk9-7M-DEK" secondAttribute="bottom" constant="20" symbolic="YES" id="P4Z-UM-mZY"/>
                             <constraint firstItem="5X9-mk-vbb" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="cEF-qy-X3k"/>
-                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="centerX" secondItem="5X9-mk-vbb" secondAttribute="centerX" id="dKm-s5-QkJ"/>
+                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="top" secondItem="LaV-KV-DTJ" secondAttribute="bottom" constant="18" id="cOF-pF-0Gn"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dYF-2W-FQ1"/>
-                            <constraint firstItem="5X9-mk-vbb" firstAttribute="top" secondItem="EyB-hT-8Ym" secondAttribute="bottom" constant="8" symbolic="YES" id="fCm-Pm-iD3"/>
                             <constraint firstItem="dii-Vg-90N" firstAttribute="trailing" secondItem="LaV-KV-DTJ" secondAttribute="trailing" id="l4y-8y-Mw1"/>
-                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="top" secondItem="LaV-KV-DTJ" secondAttribute="bottom" constant="28" id="lgJ-k0-Z6Z"/>
+                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="leading" secondItem="LaV-KV-DTJ" secondAttribute="leading" id="ldJ-Vj-oGq"/>
                             <constraint firstItem="LaV-KV-DTJ" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="nxZ-oD-Bjx"/>
                         </constraints>
                     </view>
