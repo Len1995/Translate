@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,12 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="&lt;Text to Translate&gt;" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dii-Vg-90N">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="&lt;Text to Translate&gt;" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dii-Vg-90N">
                                 <rect key="frame" x="20" y="28" width="560" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="YTh-GD-fJj"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -35,25 +34,47 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="&lt;Translated Text&gt;" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LaV-KV-DTJ">
-                                <rect key="frame" x="20" y="187" width="560" height="128"/>
+                                <rect key="frame" x="20" y="193" width="560" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="0Qw-rW-jUo"/>
+                                    <constraint firstAttribute="height" constant="128" id="evg-Cx-yW6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-mk-vbb">
-                                <rect key="frame" x="120" y="372" width="361" height="139"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-mk-vbb">
+                                <rect key="frame" x="450" y="354" width="130" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="139" id="OHN-KK-b73"/>
+                                    <constraint firstAttribute="width" constant="130" id="Pm5-TX-Sww"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="11k-Wd-gxp"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="French" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-hT-8Ym">
-                                <rect key="frame" x="20" y="331" width="53" height="21"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fN-sT-39y">
+                                <rect key="frame" x="20" y="354" width="130" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="4Gg-CA-Itu"/>
+                                    <constraint firstAttribute="height" constant="70" id="kGC-po-4Da"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uje-qa-1UF">
+                                <rect key="frame" x="57" y="432" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;-&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HU-2q-3YL">
+                                <rect key="frame" x="286" y="432" width="29" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="5oX-CB-ZeM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-hT-8Ym">
+                                <rect key="frame" x="486" y="429" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -61,25 +82,33 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="leading" secondItem="dii-Vg-90N" secondAttribute="leading" id="1I9-UQ-zeR"/>
-                            <constraint firstItem="5X9-mk-vbb" firstAttribute="top" secondItem="LaV-KV-DTJ" secondAttribute="bottom" constant="21" id="4Im-8L-Tsr"/>
-                            <constraint firstItem="dii-Vg-90N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8IO-Lz-JKE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5X9-mk-vbb" secondAttribute="trailing" constant="99" id="Ekb-yK-Xk3"/>
+                            <constraint firstItem="8fN-sT-39y" firstAttribute="top" secondItem="5X9-mk-vbb" secondAttribute="top" id="1zB-ng-xxa"/>
+                            <constraint firstItem="5X9-mk-vbb" firstAttribute="bottom" secondItem="8fN-sT-39y" secondAttribute="bottom" id="35H-3l-ZzA"/>
+                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="leading" secondItem="dii-Vg-90N" secondAttribute="leading" id="3nS-in-q79"/>
+                            <constraint firstItem="8fN-sT-39y" firstAttribute="top" secondItem="LaV-KV-DTJ" secondAttribute="bottom" constant="33" id="A20-uZ-fKc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8fN-sT-39y" secondAttribute="bottom" constant="176" id="BJk-oF-Km5"/>
                             <constraint firstItem="Tk9-7M-DEK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GUW-Qr-ubm"/>
-                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="top" secondItem="dii-Vg-90N" secondAttribute="bottom" constant="31" id="LTD-OY-g8P"/>
+                            <constraint firstItem="dii-Vg-90N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="LAW-ai-bQf"/>
                             <constraint firstAttribute="bottom" secondItem="Tk9-7M-DEK" secondAttribute="bottom" constant="20" symbolic="YES" id="P4Z-UM-mZY"/>
-                            <constraint firstItem="5X9-mk-vbb" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="cEF-qy-X3k"/>
-                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="top" secondItem="LaV-KV-DTJ" secondAttribute="bottom" constant="18" id="cOF-pF-0Gn"/>
-                            <constraint firstItem="dii-Vg-90N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dYF-2W-FQ1"/>
-                            <constraint firstItem="dii-Vg-90N" firstAttribute="trailing" secondItem="LaV-KV-DTJ" secondAttribute="trailing" id="l4y-8y-Mw1"/>
-                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="leading" secondItem="LaV-KV-DTJ" secondAttribute="leading" id="ldJ-Vj-oGq"/>
-                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="nxZ-oD-Bjx"/>
+                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="leading" secondItem="8fN-sT-39y" secondAttribute="leading" id="Q3q-wF-Z8j"/>
+                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="centerX" secondItem="5X9-mk-vbb" secondAttribute="centerX" id="QHg-ml-Cj9"/>
+                            <constraint firstItem="dii-Vg-90N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="V3Q-jK-jev"/>
+                            <constraint firstItem="uje-qa-1UF" firstAttribute="centerX" secondItem="8fN-sT-39y" secondAttribute="centerX" id="WwI-8i-QdL"/>
+                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="trailing" secondItem="5X9-mk-vbb" secondAttribute="trailing" id="Xfy-NP-KzK"/>
+                            <constraint firstItem="0HU-2q-3YL" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="b4d-ws-vX2"/>
+                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="trailing" secondItem="dii-Vg-90N" secondAttribute="trailing" id="cqt-1x-MFE"/>
+                            <constraint firstItem="EyB-hT-8Ym" firstAttribute="centerY" secondItem="0HU-2q-3YL" secondAttribute="centerY" id="e9a-hC-58V"/>
+                            <constraint firstItem="uje-qa-1UF" firstAttribute="baseline" secondItem="0HU-2q-3YL" secondAttribute="firstBaseline" id="jSq-hs-5dF"/>
+                            <constraint firstItem="LaV-KV-DTJ" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="mmn-3c-i4x"/>
+                            <constraint firstItem="uje-qa-1UF" firstAttribute="top" secondItem="8fN-sT-39y" secondAttribute="bottom" constant="8" symbolic="YES" id="qoh-X6-xL1"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="picker" destination="5X9-mk-vbb" id="pwA-FT-db4"/>
-                        <outlet property="pickerLabel" destination="EyB-hT-8Ym" id="ALE-eV-35U"/>
+                        <outlet property="initLangPicker" destination="8fN-sT-39y" id="P5n-Gb-IZm"/>
+                        <outlet property="initLangPickerLabel" destination="uje-qa-1UF" id="gfM-mi-ap4"/>
                         <outlet property="textToTranslate" destination="dii-Vg-90N" id="LG1-oa-9nd"/>
+                        <outlet property="transLangPicker" destination="5X9-mk-vbb" id="Yo5-oC-ayb"/>
+                        <outlet property="transLangPickerLabel" destination="EyB-hT-8Ym" id="BBC-9F-jPI"/>
                         <outlet property="translatedText" destination="LaV-KV-DTJ" id="lwH-Vg-B7t"/>
                     </connections>
                 </viewController>

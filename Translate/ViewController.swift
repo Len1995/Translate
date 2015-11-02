@@ -12,17 +12,23 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBOutlet weak var textToTranslate: UITextView!
     @IBOutlet weak var translatedText: UITextView!
-    @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var pickerLabel: UILabel!
     
+    @IBOutlet weak var transLangPicker: UIPickerView!
+    @IBOutlet weak var transLangPickerLabel: UILabel!
     
-    let pickerData = ["French", "Irish", "Turkish"]
+    @IBOutlet weak var initLangPicker: UIPickerView!
+    @IBOutlet weak var initLangPickerLabel: UILabel!
+    
+    let transLangPickerData = ["English", "French", "Irish", "Turkish"]
+    let initLangPickerData = ["English", "French", "Irish", "Turkish"]
     //var data = NSMutableData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.picker.dataSource = self
-        self.picker.delegate = self
+        self.initLangPicker.dataSource = self
+        self.initLangPicker.delegate = self
+        self.transLangPicker.dataSource = self
+        self.transLangPicker.delegate = self
         
     }
     
@@ -35,14 +41,36 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         let str = textToTranslate.text
         let escapedStr = str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         var transLang: String?
+        var initLang: String?
         
-        if pickerLabel.text == "French" {
+        //language to be translated
+        if initLangPickerLabel.text == "English"{
+            initLang = "en"
+        }
+        else if initLangPickerLabel.text == "French" {
+            initLang = "fr"
+        }
+        else if initLangPickerLabel.text == "Irish" {
+            initLang = "ga"
+        }
+        else if initLangPickerLabel.text == "Turkish" {
+            initLang = "tr"
+        }
+        else {
+            initLang = nil
+        }
+        
+        //translated language
+        if transLangPickerLabel.text == "English"{
+            transLang = "en"
+        }
+        else if transLangPickerLabel.text == "French" {
             transLang = "fr"
         }
-        else if pickerLabel.text == "Irish" {
+        else if transLangPickerLabel.text == "Irish" {
             transLang = "ga"
         }
-        else if pickerLabel.text == "Turkish" {
+        else if transLangPickerLabel.text == "Turkish" {
             transLang = "tr"
         }
         else {
@@ -53,7 +81,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             self.translatedText.text = "ERROR: Output language was set to nil"
         }
         
-        let langStr = ("en|\(transLang!)").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let langStr = ("\(initLang!)|\(transLang!)").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         
         let urlStr:String = ("http://api.mymemory.translated.net/get?q="+escapedStr!+"&langpair="+langStr!)
         
@@ -97,17 +125,33 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        if pickerView == initLangPicker {
+            return initLangPickerData.count
+        }
+        else {
+            return transLangPickerData.count
+        }
     }
     
     //MARK: Delegates
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        if pickerView == initLangPicker {
+            return initLangPickerData[row]
+        }
+        else {
+            return transLangPickerData[row]
+        }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerLabel.text = pickerData[row]
+        if pickerView == initLangPicker{
+            initLangPickerLabel.text = initLangPickerData[row]
+        }
+        else {
+            transLangPickerLabel.text = transLangPickerData[row]
+        }
     }
 }
 
