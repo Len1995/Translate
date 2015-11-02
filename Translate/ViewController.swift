@@ -34,9 +34,24 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBAction func translate(sender: AnyObject) {
         let str = textToTranslate.text
         let escapedStr = str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        var langStr:String?
         
-        //if pickerLabel == "French" {}
-        let langStr = ("en|fr").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        if pickerLabel.text == "French" {
+            langStr = ("en|fr").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        }
+        else if pickerLabel.text == "Irish" {
+            langStr = ("en|ga").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        }
+        else if pickerLabel.text == "Turkish" {
+            langStr = ("en|tr").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        }
+        else {
+            langStr == nil
+        }
+        
+        if langStr == nil {
+            return
+        }
         
         let urlStr:String = ("http://api.mymemory.translated.net/get?q="+escapedStr!+"&langpair="+langStr!)
         

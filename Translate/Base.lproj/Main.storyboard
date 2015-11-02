@@ -48,6 +48,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="OHN-KK-b73"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="11k-Wd-gxp"/>
+                                </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="French" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-hT-8Ym">
                                 <rect key="frame" x="20" y="331" width="53" height="21"/>
