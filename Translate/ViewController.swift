@@ -10,26 +10,55 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet weak var textToTranslate: UITextView!
-    @IBOutlet weak var translatedText: UITextView!
+    @IBOutlet weak var textToTranslate: UITextField!
+    @IBOutlet weak var translatedText: UITextField!
     
     @IBOutlet weak var transLangPicker: UIPickerView!
-    @IBOutlet weak var transLangPickerLabel: UILabel!
+    @IBOutlet weak var initLangPicker: UIPickerView?
     
-    @IBOutlet weak var initLangPicker: UIPickerView!
-    @IBOutlet weak var initLangPickerLabel: UILabel!
+    @IBOutlet weak var initPickerTextField: UITextField!
     
+    var transLangText: String?
     let transLangPickerData = ["English", "French", "Irish", "Turkish"]
     let initLangPickerData = ["English", "French", "Irish", "Turkish"]
     //var data = NSMutableData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initLangPicker.dataSource = self
+        /*self.initLangPicker.dataSource = self
         self.initLangPicker.delegate = self
         self.transLangPicker.dataSource = self
         self.transLangPicker.delegate = self
+        */
+        let initLangPicker = UIPickerView()
+        initLangPicker.showsSelectionIndicator = true
+        initLangPicker.delegate = self
+        initLangPicker.dataSource = self
+        initPickerTextField.inputView = initLangPicker
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
         
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        initPickerTextField.inputAccessoryView = toolBar
+        
+        // Dismiss Keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func donePressed(sender: UIBarButtonItem) {
+        initPickerTextField.resignFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,21 +68,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func translate(sender: AnyObject) {
         let str = textToTranslate.text
-        let escapedStr = str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let escapedStr = str!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         var transLang: String?
         var initLang: String?
         
         //language to be translated
-        if initLangPickerLabel.text == "English"{
+        if initPickerTextField.text == "English" {
             initLang = "en"
         }
-        else if initLangPickerLabel.text == "French" {
+        else if initPickerTextField.text == "French" {
             initLang = "fr"
         }
-        else if initLangPickerLabel.text == "Irish" {
+        else if initPickerTextField.text == "Irish" {
             initLang = "ga"
         }
-        else if initLangPickerLabel.text == "Turkish" {
+        else if initPickerTextField.text == "Turkish" {
             initLang = "tr"
         }
         else {
@@ -61,24 +90,33 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
         
         //translated language
-        if transLangPickerLabel.text == "English"{
+        if transLangText == "English"{
             transLang = "en"
         }
-        else if transLangPickerLabel.text == "French" {
+        else if transLangText == "French" {
             transLang = "fr"
         }
-        else if transLangPickerLabel.text == "Irish" {
+        else if transLangText == "Irish" {
             transLang = "ga"
         }
-        else if transLangPickerLabel.text == "Turkish" {
+        else if transLangText == "Turkish" {
             transLang = "tr"
         }
         else {
             transLang = nil
         }
         
+        if initLang == nil {
+            self.translatedText.text = "ERROR: Input language was set to nil"
+        }
+        
         if transLang == nil {
             self.translatedText.text = "ERROR: Output language was set to nil"
+        }
+        
+        if initLang == transLang {
+            self.translatedText.text = "Cannot translate from itself to itself"
+            return
         }
         
         let langStr = ("\(initLang!)|\(transLang!)").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
@@ -146,11 +184,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == initLangPicker{
-            initLangPickerLabel.text = initLangPickerData[row]
+        if pickerView == initLangPicker {
+            initPickerTextField.text = initLangPickerData[row]
         }
         else {
-            transLangPickerLabel.text = transLangPickerData[row]
+            transLangText = transLangPickerData[row]
         }
     }
 }
