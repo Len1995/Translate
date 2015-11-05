@@ -14,10 +14,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var translatedText: UITextField!
     
     @IBOutlet weak var transLangPicker: UIPickerView!
-    @IBOutlet weak var initLangPicker: UIPickerView?
+    @IBOutlet weak var initLangPicker: UIPickerView!
     
-    @IBOutlet weak var initPickerTextField: UITextField!
-    
+    var initLangText: String?
     var transLangText: String?
     let transLangPickerData = ["English", "French", "Irish", "Turkish"]
     let initLangPickerData = ["English", "French", "Irish", "Turkish"]
@@ -25,28 +24,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*self.initLangPicker.dataSource = self
+        self.initLangPicker.dataSource = self
         self.initLangPicker.delegate = self
         self.transLangPicker.dataSource = self
         self.transLangPicker.delegate = self
-        */
-        let initLangPicker = UIPickerView()
-        initLangPicker.showsSelectionIndicator = true
-        initLangPicker.delegate = self
-        initLangPicker.dataSource = self
-        initPickerTextField.inputView = initLangPicker
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.Default
-        toolBar.translucent = true
-        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
-        toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
-        
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.userInteractionEnabled = true
-        initPickerTextField.inputAccessoryView = toolBar
         
         // Dismiss Keyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: "dismissKeyboard")
@@ -55,10 +36,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    func donePressed(sender: UIBarButtonItem) {
-        initPickerTextField.resignFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,16 +50,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         var initLang: String?
         
         //language to be translated
-        if initPickerTextField.text == "English" {
+        if initLangText == "English" {
             initLang = "en"
         }
-        else if initPickerTextField.text == "French" {
+        else if initLangText == "French" {
             initLang = "fr"
         }
-        else if initPickerTextField.text == "Irish" {
+        else if initLangText == "Irish" {
             initLang = "ga"
         }
-        else if initPickerTextField.text == "Turkish" {
+        else if initLangText == "Turkish" {
             initLang = "tr"
         }
         else {
@@ -107,11 +84,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
         
         if initLang == nil {
-            self.translatedText.text = "ERROR: Input language was set to nil"
+            initLang = "en"
         }
         
         if transLang == nil {
-            self.translatedText.text = "ERROR: Output language was set to nil"
+            transLang = "en"
         }
         
         if initLang == transLang {
@@ -185,11 +162,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == initLangPicker {
-            initPickerTextField.text = initLangPickerData[row]
+            initLangText = initLangPickerData[row]
         }
         else {
             transLangText = transLangPickerData[row]
         }
     }
+    
 }
 

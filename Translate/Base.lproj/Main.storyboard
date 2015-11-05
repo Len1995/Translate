@@ -25,16 +25,6 @@
                                     <action selector="translate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EBT-0P-JhC"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-mk-vbb">
-                                <rect key="frame" x="235" y="383" width="130" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="TN9-Wy-qjQ"/>
-                                    <constraint firstAttribute="height" constant="70" id="Uan-4G-LYH"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="11k-Wd-gxp"/>
-                                </connections>
-                            </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="la8-HB-iDE">
                                 <rect key="frame" x="20" y="77" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -45,33 +35,44 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a Language" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6cI-Ve-Qkj">
-                                <rect key="frame" x="233" y="130" width="135" height="30"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOx-z4-FtH">
+                                <rect key="frame" x="235" y="154" width="130" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="135" id="jGj-Qz-6kA"/>
+                                    <constraint firstAttribute="height" constant="70" id="E4c-tV-Exv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-mk-vbb">
+                                <rect key="frame" x="235" y="383" width="130" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="TN9-Wy-qjQ"/>
+                                    <constraint firstAttribute="height" constant="70" id="Uan-4G-LYH"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="11k-Wd-gxp"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="la8-HB-iDE" firstAttribute="trailing" secondItem="qMi-oZ-yVq" secondAttribute="trailing" id="5pM-Ya-c7E"/>
                             <constraint firstItem="la8-HB-iDE" firstAttribute="leading" secondItem="qMi-oZ-yVq" secondAttribute="leading" id="8jP-qf-SpN"/>
                             <constraint firstItem="la8-HB-iDE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="C86-yb-equ"/>
-                            <constraint firstItem="6cI-Ve-Qkj" firstAttribute="centerX" secondItem="5X9-mk-vbb" secondAttribute="centerX" id="I73-N8-WPE"/>
                             <constraint firstItem="Tk9-7M-DEK" firstAttribute="top" secondItem="5X9-mk-vbb" secondAttribute="bottom" constant="97" id="TK4-vS-t5p"/>
                             <constraint firstItem="la8-HB-iDE" firstAttribute="centerX" secondItem="Tk9-7M-DEK" secondAttribute="centerX" id="VJb-BV-La3"/>
-                            <constraint firstItem="6cI-Ve-Qkj" firstAttribute="top" secondItem="la8-HB-iDE" secondAttribute="bottom" constant="23" id="Y6D-EP-4P6"/>
                             <constraint firstItem="la8-HB-iDE" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Yee-9a-tht"/>
                             <constraint firstAttribute="bottom" secondItem="5X9-mk-vbb" secondAttribute="bottom" constant="147" id="g9o-Y7-HKK"/>
-                            <constraint firstItem="6cI-Ve-Qkj" firstAttribute="centerX" secondItem="la8-HB-iDE" secondAttribute="centerX" id="ko1-QI-Igk"/>
+                            <constraint firstItem="iOx-z4-FtH" firstAttribute="top" secondItem="la8-HB-iDE" secondAttribute="bottom" constant="47" id="o6H-H6-mxJ"/>
                             <constraint firstItem="la8-HB-iDE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="57" id="pvZ-mc-J6g"/>
+                            <constraint firstItem="iOx-z4-FtH" firstAttribute="leading" secondItem="5X9-mk-vbb" secondAttribute="leading" id="u5L-hq-1t4"/>
+                            <constraint firstItem="iOx-z4-FtH" firstAttribute="centerX" secondItem="la8-HB-iDE" secondAttribute="centerX" id="wwB-of-bbo"/>
+                            <constraint firstItem="iOx-z4-FtH" firstAttribute="trailing" secondItem="5X9-mk-vbb" secondAttribute="trailing" id="xXo-O7-O7i"/>
                             <constraint firstItem="5X9-mk-vbb" firstAttribute="top" secondItem="qMi-oZ-yVq" secondAttribute="bottom" constant="40" id="zwT-UD-Pvm"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="initPickerTextField" destination="6cI-Ve-Qkj" id="iJG-Bg-Yzm"/>
+                        <outlet property="initLangPicker" destination="iOx-z4-FtH" id="UGL-1j-W52"/>
                         <outlet property="textToTranslate" destination="la8-HB-iDE" id="uoa-y0-Y3y"/>
                         <outlet property="transLangPicker" destination="5X9-mk-vbb" id="Yo5-oC-ayb"/>
                         <outlet property="translatedText" destination="qMi-oZ-yVq" id="9oF-Iw-wuZ"/>
