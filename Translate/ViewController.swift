@@ -106,8 +106,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         //var data = NSMutableData()var data = NSMutableData()
         
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        indicator.center = view.center
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .White)
+        indicator.center = CGPointMake(view.frame.width / 2.0, (view.frame.height - 75))
         view.addSubview(indicator)
         indicator.startAnimating()
         
